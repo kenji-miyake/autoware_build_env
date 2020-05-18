@@ -1,0 +1,24 @@
+---
+name: ci
+on:
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.community/t5/GitHub-Actions/BUG-Strange-quot-No-space-left-on-device-quot-IOExceptions-on/m-p/53348/highlight/true#M8799
+      - name: Free disk space
+        run: |
+          sudo swapoff /swapfile
+          sudo rm -rf /swapfile /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          df -h
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Lint
+        run: brew install hadolint && hadolint ./Dockerfile
+
+      - name: Build docker image
+        run: docker build .

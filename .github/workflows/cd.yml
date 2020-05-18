@@ -1,0 +1,46 @@
+---
+name: cd
+on:
+  push:
+    branches:
+      - melodic
+
+env:
+  GITHUB_BASE_NAME: docker.pkg.github.com/${{ github.repository }}/autoware_build_env
+  GITHUB_USER_NAME: kenji-miyake
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.community/t5/GitHub-Actions/BUG-Strange-quot-No-space-left-on-device-quot-IOExceptions-on/m-p/53348/highlight/true#M8799
+      - name: Free disk space
+        run: |
+          sudo swapoff /swapfile
+          sudo rm -rf /swapfile /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          df -h
+
+      - name: Set env
+        run: |
+          export TAG_NAME="${GITHUB_REF#refs/heads/}"
+          echo "::set-env name=GITHUB_TAG::${GITHUB_BASE_NAME}:${TAG_NAME}"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Lint
+        run: |
+          brew install hadolint
+          hadolint ./Dockerfile
+
+      - name: Build
+        run: |
+          docker build . -t "${GITHUB_TAG}"
+
+      - name: Login
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u "${GITHUB_USER_NAME}" --password-stdin
+
+      - name: Push
+        run: |
+          docker push "${GITHUB_TAG}"

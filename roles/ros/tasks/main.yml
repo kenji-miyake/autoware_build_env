@@ -50,9 +50,6 @@
 - name: ROS (install dependencies for building packages)
   apt:
     name:
-      - "ros-{{ rosdistro }}-velodyne-pointcloud"
-      - "ros-{{ rosdistro }}-roswww"
-      - "ros-{{ rosdistro }}-rosbridge-server"
       - build-essential
       - python3-vcstool
       - python3-colcon-common-extensions

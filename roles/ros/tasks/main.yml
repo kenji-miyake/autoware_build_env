@@ -54,6 +54,7 @@
       - "ros-{{ rosdistro }}-roswww"
       - "ros-{{ rosdistro }}-rosbridge-server"
       - build-essential
+      - python3-vcstool
       - python3-colcon-common-extensions
     state: latest
     update_cache: yes

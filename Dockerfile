@@ -5,7 +5,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   ansible \
   curl \
   git \
-  gnupg
+  gnupg \
+  xz-utils
 
 WORKDIR /opt/ansible
 

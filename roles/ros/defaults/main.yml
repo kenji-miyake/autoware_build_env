@@ -1,5 +1,5 @@
 ---
-rosdistro: "melodic"
+rosdistro: "noetic"
 package: "desktop-full"
 repository: "http://packages.ros.org/ros/ubuntu"
 keyserver: "hkp://keyserver.ubuntu.com:80"

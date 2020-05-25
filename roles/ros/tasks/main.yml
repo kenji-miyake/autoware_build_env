@@ -26,7 +26,7 @@
 
 - name: ROS (install rosdep)
   apt:
-    name: "python-rosdep"
+    name: "python3-rosdep"
     state: latest
     update_cache: yes
   become: yes

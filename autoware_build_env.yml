@@ -9,6 +9,6 @@
   roles:
     - { role: cuda, when: yn_gpu == 'y', tags: ["cuda"] }
     - { role: tensorrt, when: yn_gpu == 'y', tags: ["tensorrt"] }
-    - { role: ros, vars: { rosdistro: melodic }, tags: ["ros"] }
+    - { role: ros, vars: { rosdistro: noetic }, tags: ["ros"] }
     - { role: osqp, tags: ["osqp"] }
     - { role: autoware, tags: ["autoware"] }

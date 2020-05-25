@@ -3,7 +3,7 @@ name: cd
 on:
   push:
     branches:
-      - melodic
+      - noetic
 
 env:
   GITHUB_BASE_NAME: docker.pkg.github.com/${{ github.repository }}/autoware_build_env

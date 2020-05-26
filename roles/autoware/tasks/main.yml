@@ -21,3 +21,10 @@
 - name: Autoware (install egm2008-1)
   shell: geographiclib-get-geoids egm2008-1
   become: yes
+
+- name: Autoware (install python-is-python3)
+  apt:
+    name: python-is-python3
+    state: latest
+    update_cache: yes
+  become: yes

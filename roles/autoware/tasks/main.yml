@@ -28,3 +28,28 @@
     state: latest
     update_cache: yes
   become: yes
+
+- name: Autoware (install gcc/g++ 8)
+  apt:
+    name:
+      - gcc-8
+      - g++-8
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: Autoware (update-alternatives gcc)
+  alternatives:
+    link: /usr/bin/gcc
+    name: gcc
+    path: /usr/bin/gcc-8
+    priority: 8
+  become: yes
+
+- name: Autoware (update-alternatives g++)
+  alternatives:
+    link: /usr/bin/g++
+    name: g++
+    path: /usr/bin/g++-8
+    priority: 8
+  become: yes

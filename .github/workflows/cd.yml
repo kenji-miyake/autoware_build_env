@@ -3,7 +3,7 @@ name: cd
 on:
   push:
     branches:
-      - noetic
+      - noetic-cuda-11-0
 
 env:
   GITHUB_BASE_NAME: docker.pkg.github.com/${{ github.repository }}/autoware_build_env

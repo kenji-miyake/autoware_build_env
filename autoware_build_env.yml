@@ -3,7 +3,7 @@
   become: no
   vars_prompt:
     - name: yn_gpu
-      prompt: "Do you install GPU modules(cuda: 10.2, cudnn: 7.6.5, TensorRT: 7.0.0)? (y/n)"
+      prompt: "Do you install GPU modules(cuda, cudnn, TensorRT)? (y/n)"
       default: "y"
       private: no
   roles:

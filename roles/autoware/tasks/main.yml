@@ -29,11 +29,11 @@
     update_cache: yes
   become: yes
 
-- name: Autoware (install gcc/g++ 8)
+- name: Autoware (install gcc/g++ 9)
   apt:
     name:
-      - gcc-8
-      - g++-8
+      - gcc-9
+      - g++-9
     state: latest
     update_cache: yes
   become: yes
@@ -42,14 +42,14 @@
   alternatives:
     link: /usr/bin/gcc
     name: gcc
-    path: /usr/bin/gcc-8
-    priority: 8
+    path: /usr/bin/gcc-9
+    priority: 9
   become: yes
 
 - name: Autoware (update-alternatives g++)
   alternatives:
     link: /usr/bin/g++
     name: g++
-    path: /usr/bin/g++-8
-    priority: 8
+    path: /usr/bin/g++-9
+    priority: 9
   become: yes
